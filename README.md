@@ -1,13 +1,13 @@
 ## CustomTextView ##
-An android lib that (for now only) enables adding a custom font from XML layout
+An android widget that (for now only) enables adding a custom font from XML layout
 
-Unlike most of custom text views oublished this one maintains textStyle (bold, italic, normal) set, and also works if font is not set.
+Unlike most of custom text views published, this one maintains textStyle (bold, italic, normal) that you set, and also works if font is not set.
 
 Plans exist to further enhance this library, but that'll happen when there's more spare time :)
 
 Please read the guide and if in doubt do not hesitate to fire the question
 
-Please do check the Example app provided in this repository if you have any doubts on how to use the lib, and also if you have any suggestions.
+Please do check the Example app provided in this repository if you have any doubts on how to use the widget, and also if you have any suggestions please do contact me.
 
 Preview in Android Studio 2.2+ should be fully working. I cannot guarnatee for earlier editions.
 
@@ -63,7 +63,7 @@ First make sure you import namespace for custom views in your layout's root view
 
 ...
 
-</LinearLAyout>
+</LinearLayout>
 ```
 Then you can use fontTypeFaceAsset in your CustomTextView:
 ```xml
