@@ -59,21 +59,27 @@ public class CustomTextView extends AppCompatTextView {
 
     private void init(Context context, AttributeSet attrs, int defStyle) {
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.font, 0, 0);
+        if (attrs != null) {
 
-        try {
+            TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.font, 0, 0);
 
-            String fontInAssets = typedArray.getString(R.styleable.font_fontTypeFaceAsset);
+            try {
 
-            Typeface typeFace = FontManager.get(context, String.format("fonts/%s", fontInAssets));
+                String fontInAssets = typedArray.getString(R.styleable.font_fontTypeFaceAsset);
 
-            if (typeFace != null) {
+                if (fontInAssets != null) {
 
-                setTypeface(typeFace);
+                    Typeface typeFace = FontManager.get(context, String.format("fonts/%s", fontInAssets));
+
+                    if (typeFace != null) {
+
+                        setTypeface(typeFace);
+                    }
+                }
+            } finally {
+
+                typedArray.recycle();
             }
-        } finally {
-
-            typedArray.recycle();
         }
     }
 }
