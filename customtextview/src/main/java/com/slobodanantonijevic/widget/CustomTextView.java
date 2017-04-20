@@ -67,8 +67,10 @@ public class CustomTextView extends AppCompatTextView {
 
             Typeface typeFace = FontManager.get(context, String.format("fonts/%s", fontInAssets));
 
-            setTypeface(typeFace);
+            if (typeFace != null) {
 
+                setTypeface(typeFace);
+            }
         } finally {
 
             typedArray.recycle();
