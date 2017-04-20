@@ -7,6 +7,8 @@ Please read the guide and if in doubt do not hesitate to fire the question
 
 Please do check the Example app provided in this repository if you have any doubts on how to use the lib, and also if you have any suggestions.
 
+Please note that preview in Android Studio will not show custom font, since Android Studio does not know how to render them yet.
+
 ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg) ![api 16+](https://img.shields.io/badge/API-16%2B-green.svg)
 
 ## Example ##
@@ -38,9 +40,11 @@ compile 'com.github.slobodanantonijevic:CustomTextView:1.0.1'
 
 ## Getting started ##
 
-Adding a font .ttf to your project in
+Adding a font .ttf to your project in assets/fonts/ folder, eg:
 ```groovy
 assets/fonts/fontawesome-webfont.ttf
+assets/fonts/UnifrakturCook-Bold.ttf
+assets/fonts/Tangerine_Regular.ttf
 ```
 
 ### Adding a custom widget in `xml` ###
