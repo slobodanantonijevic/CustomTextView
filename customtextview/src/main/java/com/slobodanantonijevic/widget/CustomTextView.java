@@ -53,43 +53,25 @@ public class CustomTextView extends AppCompatTextView {
 
     public CustomTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        init(context, attrs, defStyle);
 
-        if (FontManager.getInstance() == null) {
+    }
 
-            AssetManager assets = context.getAssets();
-            FontManager.init(assets);
-        }
+    private void init(Context context, AttributeSet attrs, int defStyle) {
 
-        if (isInEditMode()) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.font, 0, 0);
 
-            return;
-        }
+        try {
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.font);
+            String fontInAssets = typedArray.getString(R.styleable.font_fontTypeFaceAsset);
 
-        if (typedArray != null) {
+            Typeface typeFace = FontManager.get(context, String.format("fonts/%s", fontInAssets));
 
-            String fontAsset = String.format("fonts/%s", typedArray.getString(R.styleable.font_fontTypeFaceAsset));
+            setTypeface(typeFace);
 
-            try {
+        } finally {
 
-                Typeface typeFace = FontManager.getInstance().getFont(fontAsset);
-                int style = Typeface.NORMAL;
-
-                if (getTypeface() != null) {
-
-                    style = getTypeface().getStyle();
-                }
-
-                if (typeFace != null) {
-
-                    setTypeface(typeFace, style);
-                }
-
-            } catch (Exception e) {
-                Log.w("CustomTextView", String.format("Could not create a font from asset: %s", fontAsset));
-                e.printStackTrace();
-            }
+            typedArray.recycle();
         }
     }
 }

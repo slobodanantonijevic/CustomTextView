@@ -26,11 +26,13 @@
 
 package com.slobodanantonijevic.widget;
 
+import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.util.Log;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
 /**
@@ -38,77 +40,30 @@ import java.util.Map;
  */
 
 public class FontManager {
-    private static FontManager instance;
 
-    private AssetManager mMgr;
+    private static final String TAG = "FontManager";
 
-    private Map<String, Typeface> fonts;
+    private static final Hashtable<String, Typeface> cache = new Hashtable<String, Typeface>();
 
-    private FontManager(AssetManager mgr) {
+    public static Typeface get(Context context, String assetPath) {
 
-        this.mMgr = mgr;
-        fonts = new HashMap<String, Typeface>();
-    }
+        synchronized (cache) {
 
-    public static void init(AssetManager mgr) {
+            if (!cache.containsKey(assetPath)) {
 
-        instance = new FontManager(mgr);
-    }
+                try {
 
-    public static FontManager getInstance() {
+                    Typeface typeFace = Typeface.createFromAsset(context.getAssets(), assetPath);
 
-        return instance;
-    }
+                    cache.put(assetPath, typeFace);
+                } catch (Exception e) {
 
-    public Typeface getFont(String asset) {
-
-        if (fonts.containsKey(asset)) {
-
-            return fonts.get(asset);
-        }
-
-        Typeface font = null;
-
-        try {
-
-            font = Typeface.createFromAsset(mMgr, asset);
-            fonts.put(asset, font);
-        } catch (Exception e) {
-
-            Log.w("FontManager", "Failed to create Type Face from asset!");
-        }
-
-        if (font == null) {
-
-            try {
-
-                String fixedAsset = fixAssetFilename(asset);
-                font = Typeface.createFromAsset(mMgr, fixedAsset);
-                fonts.put(asset, font);
-                fonts.put(fixedAsset, font);
-            } catch (Exception e) {
-
-                Log.w("FontManager", "Something went wrong adding the font to cache!");
+                    Log.w(TAG, "Could not get typeface '" + assetPath + "' because of " + e.getMessage());
+                    return null;
+                }
             }
+
+            return cache.get(assetPath);
         }
-
-        return font;
-    }
-
-    private String fixAssetFilename(String asset) {
-        // Empty font filename?
-        // Just return it. We can't help.
-        if ((asset == null) || asset.trim().equals("")) {
-
-            return asset;
-        }
-
-        // Make sure that the font ends in '.ttf'
-        if (!asset.endsWith(".ttf")) {
-
-            asset = String.format("%s.ttf", asset);
-        }
-
-        return asset;
     }
 }
