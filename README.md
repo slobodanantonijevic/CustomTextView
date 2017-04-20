@@ -12,7 +12,7 @@ Preview in Android Studio 2.2+ should be fully working. I cannot guarnatee for e
 ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg) ![api 16+](https://img.shields.io/badge/API-16%2B-green.svg)
 
 ## Example ##
-![](/read_me/eg.png)
+![](https://github.com/slobodanantonijevic/CustomTextView/blob/master/read_me/eg.png)
 
 ## Adding to project ##
 
