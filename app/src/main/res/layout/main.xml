@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25.0sp"
+        android:textColor="@android:color/holo_blue_dark"
         custom:fontTypeFaceAsset="fontawesome-webfont.ttf"
         android:text="@string/fa_font" />
 
@@ -18,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30.0sp"
+        android:textColor="@android:color/holo_red_dark"
         custom:fontTypeFaceAsset="UnifrakturCook-Bold.ttf"
         android:text="@string/uni_font" />
 
@@ -25,6 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="50.0sp"
+        android:textColor="@android:color/holo_purple"
         custom:fontTypeFaceAsset="Tangerine_Regular.ttf"
         android:text="@string/tang_font" />
 

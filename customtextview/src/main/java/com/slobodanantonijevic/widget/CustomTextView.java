@@ -1,3 +1,29 @@
+/**
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 Slobodan Antonijević
+ * https://github.com/slobodanantonijevic/
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package com.slobodanantonijevic.widget;
 
 import android.content.Context;
@@ -14,23 +40,24 @@ import  android.support.v7.widget.AppCompatTextView;
 
 public class CustomTextView extends AppCompatTextView {
 
-    public FontManager fontMgr;
 
     public CustomTextView(Context context) {
+
         this(context, null);
     }
 
     public CustomTextView(Context context, AttributeSet attrs) {
+
         this(context, attrs, 0);
     }
 
     public CustomTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
-        if (fontMgr == null) {
+        if (FontManager.getInstance() == null) {
 
             AssetManager assets = context.getAssets();
-            fontMgr.init(assets);
+            FontManager.init(assets);
         }
 
         if (isInEditMode()) {
@@ -38,26 +65,25 @@ public class CustomTextView extends AppCompatTextView {
             return;
         }
 
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.font);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.font);
 
-        if (ta != null) {
+        if (typedArray != null) {
 
-            String fontAsset = String.format("fonts/%s", ta.getString(R.styleable.font_fontTypeFaceAsset));
+            String fontAsset = String.format("fonts/%s", typedArray.getString(R.styleable.font_fontTypeFaceAsset));
 
             try {
 
-                Typeface tf = fontMgr.getInstance().getFont(fontAsset);
+                Typeface typeFace = FontManager.getInstance().getFont(fontAsset);
                 int style = Typeface.NORMAL;
-//                float size = getTextSize();
 
                 if (getTypeface() != null) {
 
                     style = getTypeface().getStyle();
                 }
 
-                if (tf != null) {
+                if (typeFace != null) {
 
-                    setTypeface(tf, style);
+                    setTypeface(typeFace, style);
                 }
 
             } catch (Exception e) {
