@@ -1,6 +1,8 @@
 ## CustomTextView ##
 An android lib that (for now only) enables adding a custom font from XML layout
 
+Unlike most of custom text views oublished this one maintains textStyle (bold, italic, normal) set, and also works if font is not set.
+
 Plans exist to further enhance this library, but that'll happen when there's more spare time :)
 
 Please read the guide and if in doubt do not hesitate to fire the question
@@ -35,7 +37,7 @@ allprojects {
 
 Step 2. Add the dependency
 ```groovy
-compile 'com.github.slobodanantonijevic:CustomTextView:1.0.5'
+compile 'com.github.slobodanantonijevic:CustomTextView:1.0.6'
 ```
 
 ## Getting started ##
