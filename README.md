@@ -35,7 +35,7 @@ allprojects {
 
 Step 2. Add the dependency
 ```groovy
-compile 'com.github.slobodanantonijevic:CustomTextView:1.0.1'
+compile 'com.github.slobodanantonijevic:CustomTextView:1.0.2'
 ```
 
 ## Getting started ##
