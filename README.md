@@ -7,7 +7,7 @@ Please read the guide and if in doubt do not hesitate to fire the question
 
 Please do check the Example app provided in this repository if you have any doubts on how to use the lib, and also if you have any suggestions.
 
-Please note that preview in Android Studio will not show custom font, since Android Studio does not know how to render them yet.
+Preview in Android Studio 2.2+ should be fully working. I cannot guarnatee for earlier editions.
 
 ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg) ![api 16+](https://img.shields.io/badge/API-16%2B-green.svg)
 
@@ -35,7 +35,7 @@ allprojects {
 
 Step 2. Add the dependency
 ```groovy
-compile 'com.github.slobodanantonijevic:CustomTextView:1.0.3'
+compile 'com.github.slobodanantonijevic:CustomTextView:1.0.5'
 ```
 
 ## Getting started ##
