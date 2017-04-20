@@ -70,10 +70,16 @@ public class CustomTextView extends AppCompatTextView {
                 if (fontInAssets != null) {
 
                     Typeface typeFace = FontManager.get(context, String.format("fonts/%s", fontInAssets));
+                    int style = Typeface.NORMAL;
+
+                    if (getTypeface() != null) {
+
+                        style = getTypeface().getStyle();
+                    }
 
                     if (typeFace != null) {
 
-                        setTypeface(typeFace);
+                        setTypeface(typeFace, style);
                     }
                 }
             } finally {
