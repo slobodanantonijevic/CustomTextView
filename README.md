@@ -1,3 +1,5 @@
+# Deprecated and discontinued since Android standard TextView allows this since long ago
+
 ## CustomTextView ##
 An android widget that (for now only) enables adding a custom font from XML layout
 
